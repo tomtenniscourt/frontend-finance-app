@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
     baseURL:
         process.env.NODE_ENV === "production"
         ? "https://finance-app-backend-6b1b3c021370.herokuapp.com/"
