@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const axiosInstance = axios.create({
+const axiosInstance = axios.create({
     baseURL:
         process.env.NODE_ENV === "production"
         ? "https://finance-app-backend-6b1b3c021370.herokuapp.com/"
@@ -10,3 +10,5 @@ export const axiosInstance = axios.create({
         "Access-Control-Allow-Origin": "*"
     },
 })
+
+export default axiosInstance;
