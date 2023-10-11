@@ -9,6 +9,7 @@ const [formInput, setFormInput] = useState({
   name: "",
   email: ""
 })
+console.log('formInput', formInput)
 
   useEffect(() => {
     getAllUsers()
@@ -30,16 +31,20 @@ const [formInput, setFormInput] = useState({
 const handleSubmit = async (e) => {
   e.preventDefault()
   try {
-    await createUser(formInput)
+    console.log('forminput before call', formInput)
+    await createUser({
+      name: formInput.name,
+      email: formInput.email,
+    })
   } catch (err) {
     console.error(err)
   }
-  finally {
-    setFormInput({
-      name: "",
-      email: ""
-    })
-  }
+  // finally {
+  //   setFormInput({
+  //     name: "",
+  //     email: ""
+  //   })
+  // }
 }
 
   return (
@@ -59,6 +64,7 @@ label="name"
 value={formInput.name}
 name="name"
 onChange={handleChange}
+placeholder="name"
 >
 </input>
 
@@ -68,8 +74,12 @@ label="email"
 value={formInput.email}
 name="email"
 onChange={handleChange}
+placeholder="email"
+
 >
 </input>
+
+<button type='submit'>Submit</button>
 </form>
 
     </div>
