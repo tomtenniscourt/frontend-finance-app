@@ -6,8 +6,8 @@ export const getAllUsers = async () => {
     return response.data;
 }
 
-export const createUser = async () => {
-const response = await axiosInstance.post("/users")
+export const createUser = async (userDetails) => {
+const response = await axiosInstance.post("/users", userDetails)
 console.log('createUserResponse', response)
 return response.data
 }
