@@ -32,10 +32,7 @@ const handleSubmit = async (e) => {
   e.preventDefault()
   try {
     console.log('forminput before call', formInput)
-    await createUser({
-      name: formInput.name,
-      email: formInput.email,
-    })
+    await createUser(formInput)
   } catch (err) {
     console.error(err)
   }
@@ -50,14 +47,15 @@ const handleSubmit = async (e) => {
   return (
     <div className="App">
      <p>hello world</p>
-{users.map((user) => (
-  <div key={user.id} style={{display: "inline-flex", margin: "10px"}}> 
-  <p >{user.name}</p>
+{users.map((user, index) => (
+  <div key={index} style={{display: "inline-flex", margin: "10px"}}> 
+  <p>{user.name}</p>
   <p>{user.email}</p>
 </div>
 ))}
 
 <form onSubmit={handleSubmit}>
+
 <input
 type="text"
 label="name"
@@ -66,6 +64,7 @@ name="name"
 onChange={handleChange}
 placeholder="name"
 >
+
 </input>
 
 <input
