@@ -1,5 +1,5 @@
 import './App.css';
-import { createUser, getAllUsers } from './APIs/UserAPIs';
+import { createUser, getAllUsers, getOneUser } from './APIs/UserAPIs';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -11,6 +11,10 @@ const [formInput, setFormInput] = useState({
   email: ""
 })
 console.log('formInput', formInput)
+
+getOneUser("652554d6967339c86b385ac2")
+.then((data) => console.log(data))
+.catch((err) => console.log(err))
 
   useEffect(() => {
     getAllUsers()
@@ -94,6 +98,8 @@ placeholder="email"
 <button type='submit'>Submit</button>
 </form>
 
+
+<button onClick={getOneUser}>Get One User!</button>
     </div>
   );
 }
