@@ -6,7 +6,8 @@ function App() {
 
 const [users, setUsers] = useState([])
 const [formInput, setFormInput] = useState({
-  name: "",
+  firstname: "",
+  lastname: "",
   email: ""
 })
 console.log('formInput', formInput)
@@ -49,7 +50,8 @@ const handleSubmit = async (e) => {
      <p>hello world</p>
 {users.map((user, index) => (
   <div key={index} style={{display: "inline-flex", margin: "10px"}}> 
-  <p>{user.name}</p>
+  <p>{user.firstname}</p>
+  <p>{user.lastname}</p>
   <p>{user.email}</p>
 </div>
 ))}
@@ -58,11 +60,22 @@ const handleSubmit = async (e) => {
 
 <input
 type="text"
-label="name"
-value={formInput.name}
-name="name"
+label="firstname"
+value={formInput.firstname}
+name="firstname"
 onChange={handleChange}
-placeholder="name"
+placeholder="firstname"
+>
+
+</input>
+
+<input
+type="text"
+label="lastname"
+value={formInput.lastname}
+name="lastname"
+onChange={handleChange}
+placeholder="lastname"
 >
 
 </input>
