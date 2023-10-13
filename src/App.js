@@ -8,7 +8,8 @@ const [users, setUsers] = useState([])
 const [formInput, setFormInput] = useState({
   firstname: "",
   lastname: "",
-  email: ""
+  email: "",
+  password: ""
 })
 console.log('formInput', formInput)
 
@@ -109,6 +110,17 @@ value={formInput.email}
 name="email"
 onChange={handleChange}
 placeholder="email"
+
+>
+</input>
+
+<input
+type="text"
+label="password"
+value={formInput.password}
+name="password"
+onChange={handleChange}
+placeholder="password"
 
 >
 </input>
