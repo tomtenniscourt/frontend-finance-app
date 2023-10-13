@@ -24,3 +24,8 @@ export const updateOneUser = async (userID, userDetails) => {
     return response.data
 }
 
+// DELETE REQUESTS
+export const deleteOneUser = async (userID) => {
+    const response = await axiosInstance.delete(`/users/${userID}`)
+    return response.data
+}

@@ -1,5 +1,5 @@
 import './App.css';
-import { createUser, getAllUsers, getOneUser, updateOneUser } from './APIs/UserAPIs';
+import { createUser, deleteOneUser, getAllUsers, getOneUser, updateOneUser } from './APIs/UserAPIs';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -18,6 +18,11 @@ const handleGetOneUser = () => {
 .catch((err) => console.log(err))
 }
 
+const handleDeleteUser = () => {
+  deleteOneUser("6527ba609a69076c56377cc9")
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err))
+}
 
   useEffect(() => {
     getAllUsers()
@@ -69,6 +74,7 @@ const handleUpdateSubmit = async (e) => {
   <p>{user.firstname}</p>
   <p>{user.lastname}</p>
   <p>{user.email}</p>
+  <p>{user._id}</p>
 </div>
 ))}
 
@@ -125,6 +131,11 @@ placeholder="firstname"
 ></input>
 <button type='submit'>Update User</button>
 </form>
+
+
+<h2>Deleting One User</h2>
+<button onClick={handleDeleteUser}>Delete One User</button>
+
     </div>
   );
 }
