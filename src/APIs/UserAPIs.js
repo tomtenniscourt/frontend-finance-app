@@ -12,8 +12,9 @@ export const getOneUser = async (userID) => {
 }
 
 
-// PUT REQUESTS
+// POST REQUESTS
 export const createUser = async (userDetails) => {
 const response = await axiosInstance.post("/users", userDetails)
 return response.data
 }
+
