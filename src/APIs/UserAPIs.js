@@ -18,3 +18,9 @@ const response = await axiosInstance.post("/users", userDetails)
 return response.data
 }
 
+// PUT REQUESTS
+export const updateOneUser = async (userID, userDetails) => {
+    const response = await axiosInstance.put(`/users/${userID}`, userDetails)
+    return response.data
+}
+

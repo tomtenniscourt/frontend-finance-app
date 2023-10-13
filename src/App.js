@@ -1,5 +1,5 @@
 import './App.css';
-import { createUser, getAllUsers, getOneUser } from './APIs/UserAPIs';
+import { createUser, getAllUsers, getOneUser, updateOneUser } from './APIs/UserAPIs';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -44,12 +44,21 @@ const handleSubmit = async (e) => {
   } catch (err) {
     console.error(err)
   }
-  // finally {
-  //   setFormInput({
-  //     name: "",
-  //     email: ""
-  //   })
-  // }
+  finally {
+    setFormInput({
+      name: "",
+      email: ""
+    })
+  }
+}
+
+const handleUpdateSubmit = async (e) => {
+  e.preventDefault()
+  try {
+    await updateOneUser("652554d6967339c86b385ac2",formInput)
+  } catch (err) {
+    console.error(err)
+  }
 }
 
   return (
@@ -64,7 +73,7 @@ const handleSubmit = async (e) => {
 ))}
 
 <form onSubmit={handleSubmit}>
-
+<h2> Creating a user </h2>
 <input
 type="text"
 label="firstname"
@@ -101,8 +110,21 @@ placeholder="email"
 <button type='submit'>Submit</button>
 </form>
 
-
+<h2>Getting One User</h2>
 <button onClick={handleGetOneUser}>Get One User!</button>
+
+<h2>Updating one user</h2>
+<form onSubmit={handleUpdateSubmit}>
+<input
+type="text"
+label="firstname"
+value={formInput.firstname}
+name="firstname"
+onChange={handleChange}
+placeholder="firstname"
+></input>
+<button type='submit'>Update User</button>
+</form>
     </div>
   );
 }
