@@ -12,9 +12,12 @@ const [formInput, setFormInput] = useState({
 })
 console.log('formInput', formInput)
 
-getOneUser("652554d6967339c86b385ac2")
+const handleGetOneUser = () => {
+  getOneUser("652554d6967339c86b385ac2")
 .then((data) => console.log(data))
 .catch((err) => console.log(err))
+}
+
 
   useEffect(() => {
     getAllUsers()
@@ -99,7 +102,7 @@ placeholder="email"
 </form>
 
 
-<button onClick={getOneUser}>Get One User!</button>
+<button onClick={handleGetOneUser}>Get One User!</button>
     </div>
   );
 }

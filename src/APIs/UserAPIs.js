@@ -3,7 +3,6 @@ import axiosInstance from "./AxiosInstance"
 // GET REQUESTS
 export const getAllUsers = async () => {
     const response = await axiosInstance.get("/users");
-    console.log('response', response)
     return response.data;
 }
 
