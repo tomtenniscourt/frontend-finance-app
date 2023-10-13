@@ -19,7 +19,7 @@ const handleGetOneUser = () => {
 }
 
 const handleDeleteUser = () => {
-  deleteOneUser("6527ba609a69076c56377cc9")
+  deleteOneUser("6526bed24dfc0a4e7044c16f")
   .then((data) => console.log(data))
   .catch((err) => console.log(err))
 }
