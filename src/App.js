@@ -14,13 +14,13 @@ const [formInput, setFormInput] = useState({
 console.log('formInput', formInput)
 
 const handleGetOneUser = () => {
-  getOneUser("652676a7db284fe975366ea0")
+  getOneUser("652554d6967339c86b385ac2")
 .then((data) => console.log(data))
 .catch((err) => console.log(err))
 }
 
 const handleDeleteUser = () => {
-  deleteOneUser("652676a7db284fe975366ea0")
+  deleteOneUser("6526bed24dfc0a4e7044c16f")
   .then((data) => console.log(data))
   .catch((err) => console.log(err))
 }
@@ -61,7 +61,7 @@ const handleSubmit = async (e) => {
 const handleUpdateSubmit = async (e) => {
   e.preventDefault()
   try {
-    await updateOneUser("652676a7db284fe975366ea0",formInput)
+    await updateOneUser("652554d6967339c86b385ac2",formInput)
   } catch (err) {
     console.error(err)
   }
