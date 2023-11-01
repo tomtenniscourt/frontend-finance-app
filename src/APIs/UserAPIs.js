@@ -21,7 +21,12 @@ return response.data
 
 export const logUserIn = async (userDetails) => {
     const response = await axiosInstance.post("/login", userDetails)
-    return response.accessToken
+    console.log('log in response: ', response.data.accessToken)
+    if (response.data) {
+        window.localStorage.setItem("Token", response.data.accessToken)
+        window.localStorage.setItem("ExpiresAt", response.data.expiredAt)
+    }
+    return response.data.accessToken
 }
 
 // PUT REQUESTS
