@@ -1,6 +1,7 @@
 import { logUserIn } from "./APIs/UserAPIs"
+import { useState } from "react"
 
-function login() {
+export default function Login() {
 
 const [users, setUsers] = useState([])
 const [formInput, setFormInput] = useState({
@@ -31,7 +32,8 @@ const handleSubmit = async (e) => {
   }
 }
 
-    return(
+    return (
+
 <form onSubmit={handleSubmit}>
 
 <h2> Log user in </h2>
