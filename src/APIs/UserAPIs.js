@@ -1,3 +1,4 @@
+// import axios from "axios";
 import axiosInstance from "./AxiosInstance"
 
 // GET REQUESTS
@@ -14,8 +15,13 @@ export const getOneUser = async (userID) => {
 
 // POST REQUESTS
 export const createUser = async (userDetails) => {
-const response = await axiosInstance.post("/users", userDetails)
+const response = await axiosInstance.post("/register", userDetails)
 return response.data
+}
+
+export const logUserIn = async (userDetails) => {
+    const response = await axiosInstance.post("/login", userDetails)
+    return response.accessToken
 }
 
 // PUT REQUESTS
