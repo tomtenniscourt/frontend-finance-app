@@ -1,7 +1,9 @@
 
 
 const checkAccessTokenExpiry = async () => {
-    
+
+    const tokenExpirationTime = window.localStorage.getItem("ExpiresAt")
+
     try {
         const currentTimestamp = Math.floor(Date.now() / 1000)
 
