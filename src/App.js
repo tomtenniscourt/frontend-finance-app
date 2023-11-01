@@ -1,6 +1,7 @@
 import './App.css';
 import { createUser, deleteOneUser, getAllUsers, getOneUser, updateOneUser } from './APIs/UserAPIs';
 import { useEffect, useState } from 'react';
+import Login from './UserLogIn';
 
 function App() {
 
@@ -78,6 +79,10 @@ const handleUpdateSubmit = async (e) => {
   <p>{user._id}</p>
 </div>
 ))}
+
+<div>
+  { <Login /> }
+</div>
 
 <form onSubmit={handleSubmit}>
 <h2> Creating a user </h2>
