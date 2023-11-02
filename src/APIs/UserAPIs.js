@@ -1,6 +1,7 @@
 // import axios from "axios";
 import axiosInstance from "./AxiosInstance"
 import checkAccessTokenExpiry from "../Auth/CheckAccessExpiry";
+import axiosInstanceWithToken from "./AxiosInstanceWithToken";
 
 // GET REQUESTS
 export const getAllUsers = async () => {
@@ -39,7 +40,7 @@ export const regenerateAccessToken = async (userEmail) => {
 
 // PUT REQUESTS
 export const updateOneUser = async (userID, userDetails) => {
-    const response = await axiosInstance.put(`/users/${userID}`, userDetails)
+    const response = await axiosInstanceWithToken.put(`/users/${userID}`, userDetails)
     return response.data
 }
 
