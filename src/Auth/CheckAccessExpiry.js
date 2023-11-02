@@ -15,12 +15,11 @@ const CheckAccessTokenExpiry = ({userId}) => {
 
         // we only want to refresh the token if it's going to expire very soon (seconds away)
     if (currentTimestamp < tokenExpirationTime - 10) {
-    // API call to regenerate Access Token.
-
-    // User email required.
         console.log('Token all good')
         } 
         else {
+    // API call to regenerate Access Token.
+
         console.log('Token about to expire')
         getCurrentUser(userId)
             .then(data => setUserEmail(data.email))
