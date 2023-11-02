@@ -25,20 +25,20 @@ const handleGetOneUser = () => {
 }
 
 const handleDeleteUser = () => {
-  deleteOneUser("652676a7db284fe975366ea0")
+  deleteOneUser("6543cfa8ad8dd7c9b486a3e3")
   .then((data) => console.log(data))
   .catch((err) => console.log(err))
 }
 
   useEffect(() => {
-    // getAllUsers()
-    //   .then(data => {
-    //     console.log('User data: ', data);
-    //      setUsers(data)}
-    //      )
-    //   .catch(error => console.log('getAllUsers error: ', error))
+    getAllUsers()
+      .then(data => {
+        console.log('User data: ', data);
+         setUsers(data)}
+         )
+      .catch(error => console.log('getAllUsers error: ', error))
 
-    <CheckAccessTokenExpiry userId={userId} />
+    // <CheckAccessTokenExpiry userId={userId} />
   }, [testToggle])
   
 
