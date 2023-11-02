@@ -1,9 +1,8 @@
 import { logUserIn } from "./APIs/UserAPIs"
 import { useState } from "react"
 
-export default function Login() {
+export default function Login({setUserId}) {
 
-const [users, setUsers] = useState([])
 const [formInput, setFormInput] = useState({
   email: "",
   password: ""
@@ -21,6 +20,7 @@ const handleSubmit = async (e) => {
   try {
     console.log('forminput before call', formInput)
     await logUserIn(formInput)
+    .then(data => setUserId(data.userId))
   } catch (err) {
     console.error(err)
   }
