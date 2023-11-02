@@ -1,10 +1,15 @@
 import './App.css';
-import { createUser, deleteOneUser, getAllUsers, getOneUser, updateOneUser } from './APIs/UserAPIs';
+import { createUser, deleteOneUser, getAllUsers, getCurrentUser, updateOneUser } from './APIs/UserAPIs';
 import { useEffect, useState } from 'react';
+import Login from './UserLogIn';
+import CheckAccessTokenExpiry from './Auth/CheckAccessExpiry';
+import checkAccessToken from './Auth/CheckAccessExpiry';
 
 function App() {
 
 const [users, setUsers] = useState([])
+const [userId, setUserId] = useState([])
+const [testToggle, setTestToggle] = useState(false)
 const [formInput, setFormInput] = useState({
   firstname: "",
   lastname: "",
@@ -14,7 +19,7 @@ const [formInput, setFormInput] = useState({
 console.log('formInput', formInput)
 
 const handleGetOneUser = () => {
-  getOneUser("652676a7db284fe975366ea0")
+  getCurrentUser("652676a7db284fe975366ea0")
 .then((data) => console.log(data))
 .catch((err) => console.log(err))
 }
@@ -26,13 +31,15 @@ const handleDeleteUser = () => {
 }
 
   useEffect(() => {
-    getAllUsers()
-      .then(data => {
-        console.log('User data: ', data);
-         setUsers(data)}
-         )
-      .catch(error => console.log('getAllUsers error: ', error))
-  }, [])
+    // getAllUsers()
+    //   .then(data => {
+    //     console.log('User data: ', data);
+    //      setUsers(data)}
+    //      )
+    //   .catch(error => console.log('getAllUsers error: ', error))
+
+    <CheckAccessTokenExpiry userId={userId} />
+  }, [testToggle])
   
 
   const handleChange = (e) => {
@@ -52,8 +59,10 @@ const handleSubmit = async (e) => {
   }
   finally {
     setFormInput({
-      name: "",
-      email: ""
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: ""
     })
   }
 }
@@ -67,6 +76,13 @@ const handleUpdateSubmit = async (e) => {
   }
 }
 
+const x = () => {  
+  getAllUsers()
+    .then(data => setUsers(data))
+    .catch(e => console.log('error: ', e))
+}
+
+console.log('Toggle: ', testToggle)
   return (
     <div className="App">
      <p>hello world</p>
@@ -78,6 +94,12 @@ const handleUpdateSubmit = async (e) => {
   <p>{user._id}</p>
 </div>
 ))}
+
+<button onClick={() => setTestToggle(prevState => !prevState)}>TOGGLE</button>
+
+<div>
+  { <Login setUserId={setUserId} /> }
+</div>
 
 <form onSubmit={handleSubmit}>
 <h2> Creating a user </h2>
