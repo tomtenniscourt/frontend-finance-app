@@ -19,7 +19,7 @@ const checkAccessTokenExpiry = async (userId) => {
     } else {
       // API call to regenerate Access Token.
       console.log("Token about to expire");
-        debugger;
+
       getCurrentUser(userId)
         .then((userData) => {
           usersEmail = userData.email;

@@ -41,6 +41,13 @@ export const regenerateAccessToken = async (userEmail) => {
 // PUT REQUESTS
 export const updateOneUser = async (userID, userDetails) => {
     const response = await axiosInstanceWithToken.put(`/users/${userID}`, userDetails)
+    console.log('updateUser response', response.data)
+    if (response.data.accessToken) {
+        window.localStorage.removeItem("Token")
+        window.localStorage.removeItem("ExpiresAt")
+        window.localStorage.setItem("Token", response.data.accessToken)
+        window.localStorage.setItem("ExpiresAt", response.data.expiredAt)
+    }
     return response.data
 }
 

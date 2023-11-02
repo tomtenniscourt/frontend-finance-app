@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 
 // axios instance but sending the token
 const axiosInstanceWithToken = axios.create({
@@ -15,9 +16,10 @@ const axiosInstanceWithToken = axios.create({
 
 // intercept the request configuration and insert the token if it exists
 axiosInstanceWithToken.interceptors.request.use((config) => {
+
     const token = window.localStorage.getItem("Token");
     config.headers.Authorization =  token ? `${token}` : '';
-
+console.log('token in ax inst', token)
     const tokenExpirationTime = window.localStorage.getItem("ExpiresAt");
     config.headers.expiryTime =  tokenExpirationTime ? `${tokenExpirationTime}` : '';
 

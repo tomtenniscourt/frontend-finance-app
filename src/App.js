@@ -74,7 +74,8 @@ const handleSubmit = async (e) => {
 const handleUpdateSubmit = async (e) => {
   e.preventDefault()
   try {
-    await updateOneUser("652676a7db284fe975366ea0",formInput)
+    console.log('update form input', formInput)
+    await updateOneUser("6544114ad6b90e22f6460f04",formInput)
   } catch (err) {
     console.error(err)
   }
@@ -92,7 +93,7 @@ console.log('Toggle: ', testToggle)
      <p>hello world</p>
 {users.map((user, index) => (
   <div key={index} style={{display: "inline-flex", margin: "10px"}}> 
-  <p>{user.firstname}</p>
+  <p>First Name: {user.firstname}</p>
   <p>{user.lastname}</p>
   <p>{user.email}</p>
   <p>{user._id}</p>
