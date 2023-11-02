@@ -2,8 +2,8 @@ import './App.css';
 import { createUser, deleteOneUser, getAllUsers, getCurrentUser, updateOneUser } from './APIs/UserAPIs';
 import { useEffect, useState } from 'react';
 import Login from './UserLogIn';
-import CheckAccessTokenExpiry from './Auth/CheckAccessExpiry';
-import checkAccessToken from './Auth/CheckAccessExpiry';
+import checkAccessTokenExpiry from './Auth/CheckAccessExpiry';
+
 
 function App() {
 
@@ -38,9 +38,13 @@ const handleDeleteUser = () => {
          )
       .catch(error => console.log('getAllUsers error: ', error))
 
-    // <CheckAccessTokenExpiry userId={userId} />
-  }, [testToggle])
+  }, [])
   
+  useEffect(() => {
+    userId &&
+    console.log('userId in useEffect', userId)
+    checkAccessTokenExpiry(userId)
+  }, [testToggle])
 
   const handleChange = (e) => {
     setFormInput({
