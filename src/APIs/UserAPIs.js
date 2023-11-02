@@ -29,8 +29,11 @@ export const logUserIn = async (userDetails) => {
     return response.data.accessToken
 }
 
-// Set up regen access token API call.
-
+// Generate new access token.
+export const regenerateAccessToken = async (userEmail) => {
+    const response = await axiosInstance.post("/users/token", userEmail)
+    return response.data
+    }
 
 // PUT REQUESTS
 export const updateOneUser = async (userID, userDetails) => {
