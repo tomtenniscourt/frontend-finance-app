@@ -17,6 +17,10 @@ const axiosInstanceWithToken = axios.create({
 axiosInstanceWithToken.interceptors.request.use((config) => {
     const token = window.localStorage.getItem("Token");
     config.headers.Authorization =  token ? `${token}` : '';
+
+    const tokenExpirationTime = window.localStorage.getItem("ExpiresAt");
+    config.headers.expiryTime =  tokenExpirationTime ? `${tokenExpirationTime}` : '';
+
 return config;
 })
 
