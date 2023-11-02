@@ -1,5 +1,6 @@
 // import axios from "axios";
 import axiosInstance from "./AxiosInstance"
+import checkAccessTokenExpiry from "../Auth/CheckAccessExpiry";
 
 // GET REQUESTS
 export const getAllUsers = async () => {
@@ -7,7 +8,7 @@ export const getAllUsers = async () => {
     return response.data;
 }
 
-export const getOneUser = async (userID) => {
+export const getCurrentUser = async (userID) => {
     const response = await axiosInstance.get(`/users/${userID}`)
     return response.data
 }
@@ -21,12 +22,12 @@ return response.data
 
 export const logUserIn = async (userDetails) => {
     const response = await axiosInstance.post("/login", userDetails)
-    console.log('log in response: ', response.data.accessToken)
+    console.log('log in response: ', response)
     if (response.data) {
         window.localStorage.setItem("Token", response.data.accessToken)
         window.localStorage.setItem("ExpiresAt", response.data.expiredAt)
     }
-    return response.data.accessToken
+    return response.data
 }
 
 // Generate new access token.
@@ -34,6 +35,7 @@ export const regenerateAccessToken = async (userEmail) => {
     const response = await axiosInstance.post("/users/token", userEmail)
     return response.data
     }
+
 
 // PUT REQUESTS
 export const updateOneUser = async (userID, userDetails) => {
